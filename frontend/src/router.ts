@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {ROUTE} from "@/routes";
+import { ROUTE } from "@/routes";
 import * as util from "util";
-import {AppEnv} from "@/app/env/app-env";
-import {EventBus} from "@/app/event-bus/event-bus";
+import { AppEnv } from "@/app/env/app-env";
+import { EventBus } from "@/app/event-bus/event-bus";
 import qs from "qs";
-import {scrollToHash} from "@/app/utility/scrollToTarget";
+import { scrollToHash } from "@/app/utility/scrollToTarget";
 
 Vue.use(Router)
 
@@ -14,7 +14,7 @@ const router = new Router({
   linkActiveClass: 'active',
   linkExactActiveClass: 'active',
   stringifyQuery: query => {
-    let result = qs.stringify(query, {format: 'RFC1738'})
+    let result = qs.stringify(query, { format: 'RFC1738' })
     return result ? ('?' + result) : ''
   },
   scrollBehavior(to, from, savedPosition) {
@@ -45,7 +45,7 @@ const router = new Router({
           resolve(savedPosition)
         } else {
           if (Object.keys(to.query).length === 0) {
-            resolve({x: 0, y: 0})
+            resolve({ x: 0, y: 0 })
           }
         }
       }, 400)
@@ -59,207 +59,212 @@ const router = new Router({
         {
           path: '/',
           component: () => import('./views/Home.vue'),
-          meta: {title: "Home"},
+          meta: { title: "Home" },
         },
         {
           path: ROUTE.RACE_VIEWER,
           component: () => import('./views/asset-viewers/RaceViewer.vue'),
-          meta: {title: "Race Viewer"},
+          meta: { title: "Race Viewer" },
         },
         {
           path: ROUTE.COFFEE,
           component: () => import('./views/Coffee.vue'),
-          meta: {title: "Coffee"},
+          meta: { title: "Coffee" },
         },
         {
           path: ROUTE.ITEM_VIEWER,
           component: () => import('./views/asset-viewers/ItemViewer.vue'),
-          meta: {title: "Item Viewer"},
+          meta: { title: "Item Viewer" },
         },
         {
           path: ROUTE.ITEM_ICON_VIEWER,
           component: () => import('./views/asset-viewers/ItemIconViewer.vue'),
-          meta: {title: "Item Icon Viewer"},
+          meta: { title: "Item Icon Viewer" },
         },
         {
           path: ROUTE.SPELL_ANIMATION_VIEWER,
           component: () => import('./views/asset-viewers/SpellAnimationViewer.vue'),
-          meta: {title: "Spell Animations"},
+          meta: { title: "Spell Animations" },
         },
         {
           path: ROUTE.PLAYER_ANIMATION_VIEWER,
           component: () => import('./views/asset-viewers/PlayerAnimationViewer.vue'),
-          meta: {title: "Player Animation Viewer"},
+          meta: { title: "Player Animation Viewer" },
         },
         {
           path: ROUTE.CLIENT_FILES,
           component: () => import('./views/client-files/ClientFiles.vue'),
-          meta: {title: "Client Files"},
+          meta: { title: "Client Files" },
         },
         {
           path: ROUTE.STRINGS_DATABASE,
           component: () => import('./views/strings-database/StringsDatabase.vue'),
-          meta: {title: "Strings Database (dbstr)"},
+          meta: { title: "Strings Database (dbstr)" },
         },
         {
           path: ROUTE.EMITTER_VIEWER,
           component: () => import('./views/asset-viewers/EmitterViewer.vue'),
-          meta: {title: "Emitter Viewer"},
+          meta: { title: "Emitter Viewer" },
         },
         {
           path: '/test',
           component: () => import('./views/Test.vue'),
-          meta: {title: "Test"},
+          meta: { title: "Test" },
         },
         {
           path: '/components',
           component: () => import('./views/Components.vue'),
-          meta: {title: "Component Documentation"},
+          meta: { title: "Component Documentation" },
         },
         {
           path: ROUTE.TASKS,
           component: () => import('./views/tasks/TaskEditor.vue'),
-          meta: {title: "Task Editor"},
+          meta: { title: "Task Editor" },
         },
         {
           path: '/tasks/:id',
           component: () => import('./views/tasks/TaskEditor.vue'),
-          meta: {title: "Task Editor"},
+          meta: { title: "Task Editor" },
         },
         {
           path: ROUTE.SPELLS_LIST,
           component: () => import('./views/spells/Spells.vue'),
-          meta: {title: "Spells Browser"},
+          meta: { title: "Spells Browser" },
         },
         {
           path: util.format(ROUTE.SPELL_EDIT, ":id"),
           component: () => import('./views/spells/SpellEditor.vue'),
-          meta: {title: "Spell Edit"},
+          meta: { title: "Spell Edit" },
         },
         {
           path: ROUTE.ITEMS_LIST,
           component: () => import('./views/items/Items.vue'),
-          meta: {title: "Items Browser"},
+          meta: { title: "Items Browser" },
         },
         {
           path: util.format(ROUTE.ITEM_EDIT, ":id"),
           component: () => import('./views/items/ItemEditor.vue'),
-          meta: {title: "Item Edit"},
+          meta: { title: "Item Edit" },
         },
         {
           path: ROUTE.LOOT,
           component: () => import('./views/loot/Loot.vue'),
-          meta: {title: "Loot Edit"},
+          meta: { title: "Loot Edit" },
         },
         {
           path: ROUTE.ZONES,
           component: () => import('./views/zone/Zones.vue'),
-          meta: {title: "Zones"},
+          meta: { title: "Zones" },
         },
         {
           path: ROUTE.RELEASES,
           component: () => import('./views/server-developer/Releases.vue'),
-          meta: {title: "Releases"},
+          meta: { title: "Releases" },
         },
         {
           path: util.format(ROUTE.RELEASE, ":version"),
           component: () => import('./views/server-developer/Release.vue'),
-          meta: {title: "Release"},
+          meta: { title: "Release" },
         },
         {
           path: ROUTE.CHANGELOG,
           component: () => import('./views/server-developer/Changelog.vue'),
-          meta: {title: "Changelog"},
+          meta: { title: "Changelog" },
         },
         {
           path: ROUTE.MERCHANTS,
           component: () => import('./views/merchants/Merchants.vue'),
-          meta: {title: "Merchants"},
+          meta: { title: "Merchants" },
         },
         {
           path: util.format(ROUTE.MERCHANT_EDIT, ":id"),
           component: () => import('./views/merchants/MerchantEdit.vue'),
-          meta: {title: "Merchant Edit"},
+          meta: { title: "Merchant Edit" },
         },
         {
           path: ROUTE.NPCS_EDIT,
           component: () => import('./views/npcs/NPCs.vue'),
-          meta: {title: "NPC Grid Editor"},
+          meta: { title: "NPC Grid Editor" },
         },
         {
           path: ROUTE.NPC_EDIT,
           component: () => import('./views/npcs/NpcEditor.vue'),
-          meta: {title: "NPC Editor"},
+          meta: { title: "NPC Editor" },
         },
         {
           path: ROUTE.NPC_EMOTES_EDIT,
           component: () => import('./views/npcs/NpcEmotesEditor.vue'),
-          meta: {title: "NPC Emotes Editor"},
+          meta: { title: "NPC Emotes Editor" },
         },
         {
           path: ROUTE.NPC_SPELLS_EDIT,
           component: () => import('./views/npcs/NpcSpellsEditor.vue'),
-          meta: {title: "NPC Spells Editor"},
+          meta: { title: "NPC Spells Editor" },
         },
         {
           path: util.format(ROUTE.NPC_SPELL_EDIT, ":id"),
           component: () => import('./views/npcs/NpcSpellListEditor.vue'),
-          meta: {title: "NPC Spells List Editor"},
+          meta: { title: "NPC Spells List Editor" },
         },
         {
           path: '/zone/:zone',
           component: () => import('./views/zone/Zone.vue'),
-          meta: {title: "Zone"},
+          meta: { title: "Zone" },
         },
         {
           path: '/connections',
           component: () => import('./views/connections/Connections.vue'),
-          meta: {title: "Manage Database Connections"},
+          meta: { title: "Manage Database Connections" },
         },
         {
           path: ROUTE.USER_MANAGEMENT,
           component: () => import('./views/user/UserManagement.vue'),
-          meta: {title: "Manage Spire Users"},
+          meta: { title: "Manage Spire Users" },
         },
         {
           path: util.format(ROUTE.DATABASE_CONNECTION_AUDIT_LOG, ":connection"),
           component: () => import('./views/connections/AuditLog.vue'),
-          meta: {title: "Audit Log"},
+          meta: { title: "Audit Log" },
         },
         {
           path: ROUTE.QUEST_API_EXPLORER,
           component: () => import('./views/quest-api-explorer/QuestApiExplorer.vue'),
-          meta: {title: "Quest API Explorer"},
+          meta: { title: "Quest API Explorer" },
         },
         {
           path: ROUTE.SAGE,
           component: () => import('./views/sage/Sage.vue'),
-          meta: {title: "Sage"},
+          meta: { title: "Sage" },
         },
         {
           path: '/calculators',
           component: () => import('./views/Calculators.vue'),
-          meta: {title: "Calculators"},
+          meta: { title: "Calculators" },
         },
         {
           path: ROUTE.API_MODEL_RELATIONSHIP_EXPLORER,
           component: () => import('./views/api/ModelRelationshipExplorer.vue'),
-          meta: {title: "API Model Relationship Explorer"},
+          meta: { title: "API Model Relationship Explorer" },
         },
         {
           path: '/expansions',
           component: () => import('./views/Expansion.vue'),
-          meta: {title: "Expansions"},
+          meta: { title: "Expansions" },
         },
         {
           path: ROUTE.BOT_SPELLS_EDIT,
           component: () => import('./views/bots/BotSpellsEditor.vue'),
-          meta: {title: "Bot Spells List Editor"},
+          meta: { title: "Bot Spells List Editor" },
         },
         {
           path: util.format(ROUTE.BOT_SPELL_EDIT, ":id"),
           component: () => import('./views/bots/BotSpellListEditor.vue'),
-          meta: {title: "Bot Spells List Editor"},
+          meta: { title: "Bot Spells List Editor" },
+        },
+        {
+          path: ROUTE.BOT_INVENTORY,
+          component: () => import('./views/bots/BotInventory.vue'),
+          meta: { title: "Bot Inventory" },
         },
       ]
     },
@@ -272,111 +277,111 @@ const router = new Router({
         {
           path: '/',
           component: () => import('./views/admin/Dashboard.vue'),
-          meta: {title: "Dashboard"},
+          meta: { title: "Dashboard" },
         },
         {
           path: 'players-online',
           component: () => import('./views/admin/PlayersOnline.vue'),
-          meta: {title: "Players Online"},
+          meta: { title: "Players Online" },
         },
         {
           path: 'zones',
           component: () => import('./views/admin/ZoneServers.vue'),
-          meta: {title: "Zone Servers"},
+          meta: { title: "Zone Servers" },
         },
         {
           path: 'zoneservers/:port/logs',
           component: () => import('./views/admin/ZoneLogs.vue'),
-          meta: {title: "Zone Logs"},
+          meta: { title: "Zone Logs" },
         },
         {
           path: ROUTE.ADMIN_CONFIG_DISCORD_CRASH_WEBHOOK,
           component: () => import('./views/admin/configuration/DiscordCrashWebhook.vue'),
-          meta: {title: "Discord Crash Webhook"},
+          meta: { title: "Discord Crash Webhook" },
         },
         {
           path: ROUTE.ADMIN_DISCORD_WEBHOOK_SETTINGS,
           component: () => import('./views/admin/configuration/DiscordWebhooks.vue'),
-          meta: {title: "Discord Webhook Settings"},
+          meta: { title: "Discord Webhook Settings" },
         },
         {
           path: ROUTE.ADMIN_CONFIG_SERVER_RULES,
           component: () => import('./views/admin/configuration/ServerRules.vue'),
-          meta: {title: "Server Rules"},
+          meta: { title: "Server Rules" },
         },
         {
           path: ROUTE.ADMIN_CONFIG_QUEST_HOT_RELOAD,
           component: () => import('./views/admin/configuration/QuestHotReload.vue'),
-          meta: {title: "Quest Hot Reload Settings"},
+          meta: { title: "Quest Hot Reload Settings" },
         },
         {
           path: ROUTE.ADMIN_DATABASE_BACKUP,
           component: () => import('./views/admin/tools/DatabaseBackup.vue'),
-          meta: {title: "Database Backup"},
+          meta: { title: "Database Backup" },
         },
         {
           path: ROUTE.ADMIN_RELOAD,
           component: () => import('./views/admin/tools/ServerReload.vue'),
-          meta: {title: "Server Reload API"},
+          meta: { title: "Server Reload API" },
         },
         {
           path: ROUTE.ADMIN_CONFIG_MOTD,
           component: () => import('./views/admin/configuration/Motd.vue'),
-          meta: {title: "Message of the Day"},
+          meta: { title: "Message of the Day" },
         },
         {
           path: ROUTE.ADMIN_LOG_SETTINGS,
           component: () => import('./views/admin/configuration/LogSettings.vue'),
-          meta: {title: "Log Settings"},
+          meta: { title: "Log Settings" },
         },
         {
           path: ROUTE.ADMIN_CONFIG_PLAYER_EVENT_LOGS,
           component: () => import('./views/admin/player-event-logs/PlayerEventLogSettings.vue'),
-          meta: {title: "Player Event Log Settings"},
+          meta: { title: "Player Event Log Settings" },
         },
         {
           path: ROUTE.ADMIN_SERVER_CONFIG,
           component: () => import('./views/admin/configuration/ServerConfig.vue'),
-          meta: {title: "Server Configuration"},
+          meta: { title: "Server Configuration" },
         },
 
         // tools
         {
           path: ROUTE.ADMIN_FILE_LOGS,
           component: () => import('./views/admin/FileLogs.vue'),
-          meta: {title: "Server Logs"},
+          meta: { title: "Server Logs" },
         },
 
         {
           path: ROUTE.ADMIN_BACKUPS,
           component: () => import('./views/admin/Backups.vue'),
-          meta: {title: "Manual Backups"},
+          meta: { title: "Manual Backups" },
         },
         {
           path: ROUTE.ADMIN_SERVER_UPDATE,
           component: () => import('./views/admin/server-update/ServerUpdate.vue'),
-          meta: {title: "Server Update"},
+          meta: { title: "Server Update" },
         },
         {
           path: ROUTE.ADMIN_CLIENT_FILE_DOWNLOADS,
           component: () => import('./views/admin/tools/ClientAssets.vue'),
-          meta: {title: "Client Asset Management"},
+          meta: { title: "Client Asset Management" },
         },
 
         {
           path: ROUTE.ADMIN_TOOL_PLAYER_EVENT_LOGS,
           component: () => import('./views/admin/player-event-logs/PlayerEventLogs.vue'),
-          meta: {title: "Player Event Logs Explorer"},
+          meta: { title: "Player Event Logs Explorer" },
         },
         {
           path: ROUTE.ADMIN_TOOL_PLAYER_EVENT_LOGS,
           component: () => import('./views/admin/player-event-logs/PlayerEventLogs.vue'),
-          meta: {title: "Player Event Logs Explorer"},
+          meta: { title: "Player Event Logs Explorer" },
         },
         {
           path: '/admin/ws-poc',
           component: () => import('./views/admin/WebsocketPoc.vue'),
-          meta: {title: "Websocket POC"},
+          meta: { title: "Websocket POC" },
         },
       ]
     },
@@ -392,7 +397,7 @@ const router = new Router({
         {
           path: '/doc/:doc*',
           component: () => import('./views/Doc.vue'),
-          meta: {title: "Doc"},
+          meta: { title: "Doc" },
         },
       ]
     },
@@ -403,17 +408,17 @@ const router = new Router({
     {
       path: '/login',
       component: () => import('./views/Login.vue'),
-      meta: {title: "Login"},
+      meta: { title: "Login" },
     },
     {
       path: ROUTE.SPIRE_INITIALIZE,
       component: () => import('./views/SpireInitialize.vue'),
-      meta: {title: "Spire Setup"},
+      meta: { title: "Spire Setup" },
     },
     {
       path: '/fe-auth-callback',
       component: () => import('./views/AuthCallback.vue'),
-      meta: {title: "Authentication Callback"},
+      meta: { title: "Authentication Callback" },
     },
   ]
 })

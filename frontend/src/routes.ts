@@ -42,6 +42,7 @@ export const ROUTE = {
   NPC_SPELL_EDIT: "/npc-spell/%s",
   BOT_SPELLS_EDIT: "/bot-spells",
   BOT_SPELL_EDIT: "/bot-spell/%s",
+  BOT_INVENTORY: "/bots/inventory",
   PLAYER_ANIMATION_VIEWER: "/player-animation-viewer",
   QUEST_API_EXPLORER: "/quest-api-explorer",
   SAGE: "/sage",

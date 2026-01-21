@@ -41,6 +41,7 @@ var httpSet = wire.NewSet(
 	analytics.NewController,
 	controllers.NewHelloWorldController,
 	controllers.NewConnectionsController,
+	controllers.NewBotInventoryController,
 	user.NewMeController,
 	auth.NewController,
 	questapi.NewController,
@@ -196,7 +197,9 @@ func provideControllers(
 	backupController *backup.Controller,
 	websocketController *websocket.Controller,
 	systemController *system.Controller,
+	systemController *system.Controller,
 	modelController *models.Controller,
+	botInventoryController *controllers.BotInventoryController,
 ) *appControllerGroups {
 	return &appControllerGroups{
 		authControllers: []routes.Controller{
@@ -220,6 +223,7 @@ func provideControllers(
 			websocketController,
 			systemController,
 			authedAnalyticsController,
+			botInventoryController,
 		},
 		v1controllersNoAuth: []routes.Controller{
 			quest,
